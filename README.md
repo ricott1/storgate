@@ -1,11 +1,18 @@
-# storgate
-ENS for TOr
+# Storgate
+Eth New York team project
 
-Naming system for TOR is problematic:
+## Inspiration
+The [TOR network](https://2019.www.torproject.org/docs/onion-services.html.en)
+
+## What it does
+
+## Challenges we ran into
 
 
-## What we did
+## Accomplishments that we're proud of
 
-Modified metamask to redirect to onion address
 
-Created search engine to search without metamask
+## What we learned
+
+
+## What's next for Storgate
