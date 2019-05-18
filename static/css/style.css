@@ -6,10 +6,23 @@
     box-sizing: inherit;
 }
 
+body{
+    font-family: fantasy;
+}
+
 .container{
-    padding: 3rem;
+    padding: 2rem;
     position: relative;
     height: 60vh;
+}
+
+.nav__link{
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav__link:hover{
+    text-decoration: underline;
 }
 
 .form{
@@ -50,6 +63,7 @@
     padding: .3rem;
     cursor: pointer;
     border-radius: 100px;
+    font-family: inherit;
 }
 
 .form__button-1{
@@ -75,4 +89,8 @@
 
 .form__button-2:hover{
     background-color: #baecd2;
+}
+
+.marginRight{
+    margin-right: 1rem;
 }
