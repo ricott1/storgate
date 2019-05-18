@@ -15,18 +15,13 @@ def resultPage(query):
 <p>Resolver: {}</p>
 <p>Address: {}</p>
 <p>Content: {}</p>
+<p>ContentHash: {}</p>
 <p>Onion: {}</p>
 </div>
-			""".format(query, database[query]["owner"], database[query]["resolver"],database[query]["address"], database[query]["content"], database[query]["onion"])
+			""".format(query, database[query]["owner"], database[query]["resolver"],database[query]["address"], database[query]["content"], database[query]["contenthash"], database[query]["onion"])
 
-
-def digest_content_hash(hex_hash):
-    mh = multihash.digest(hex_hash, 'sha1') 
-  #   const nonPrefixedHex = contentHash.slice(2)
-  # const buffer = multihash.fromHexString(nonPrefixedHex)
-  # const contentId = multihash.toB58String(multihash.encode(buffer, 'sha2-256'))
-    return mh
-
+def is_empty_hex(hash):
+    return (hash in [b"", b"\x00\x00", b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"])
 
 def get_resolver_data(query, net="ropsten"):
     registry = web3_data["ENSRegistry"]["contract"][net]
@@ -37,31 +32,30 @@ def get_resolver_data(query, net="ropsten"):
     if resolver.functions.supportsInterface("0x3b3b57de").call():#addr interface
         address = resolver.functions.addr(ENS.namehash(query)).call()
     else:
-        address = "not supported"
-    if resolver.functions.supportsInterface("0xd8389dc5").call():#content interface
-        content = resolver.functions.content(ENS.namehash(query)).call()
-        if len(content):
-            buffer = multihash.encode(content, "sha2-256")
-            content = multihash.to_b58_string(buffer)
-        else:
-            content = ""
-    elif resolver.functions.supportsInterface("0xbc1c58d1").call():#contentHash interface
-        content = resolver.functions.contenthash(ENS.namehash(query)).call()
-        if len(content):
-            buffer = multihash.encode(content, "sha2-256")
-            content = multihash.to_b58_string(buffer)
-        else:
-            content = ""
-    else:
-        content = ""
+        address = ""
 
+    contenthash = ""
+    if resolver.functions.supportsInterface("0xbc1c58d1").call():#contentHash interface
+        contenthashbytes = resolver.functions.contenthash(ENS.namehash(query)).call()
+        print(is_empty_hex(contenthashbytes), "contenthash")
+        if not is_empty_hex(contenthashbytes):
+            buffer = multihash.encode(contenthashbytes, "sha2-256")
+            contenthash = multihash.to_b58_string(buffer)
+    
+    content = ""      
+    if resolver.functions.supportsInterface("0xd8389dc5").call():#content interface
+        contentbytes = resolver.functions.content(ENS.namehash(query)).call()
+        print(is_empty_hex(contentbytes), "content")
+        if not is_empty_hex(contentbytes):
+            buffer = multihash.encode(contentbytes, "sha2-256")
+            content = multihash.to_b58_string(buffer)
 
     if resolver.functions.supportsInterface("0x59d1d43c").call():#text interface
         onion = resolver.functions.text(ENS.namehash(query), "onion").call()
     else:
         onion = ""
     
-    return {"owner" : owner, "resolver" : resol, "address" : address, "content" : content, "onion" : onion}
+    return {"owner" : owner, "resolver" : resol, "address" : address, "content" : content, "contenthash" : contenthash, "onion" : onion}
 
 database = {}
 app = Flask(__name__)
