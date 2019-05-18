@@ -7,7 +7,7 @@
 }
 
 body{
-    font-family: fantasy;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .container{
@@ -39,6 +39,17 @@ body{
     text-align: center;
     letter-spacing: .5rem;
     font-size: 3rem;
+}
+
+.form__select{
+    padding: .5rem;
+    border-radius: 20px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.form__select:focus{
+    outline: none;
 }
 
 .search{
@@ -93,4 +104,8 @@ body{
 
 .marginRight{
     margin-right: 1rem;
+}
+
+.marginBottom{
+    margin-bottom: 2rem;
 }
