@@ -22,14 +22,21 @@
             </select><br>
             <button class="form__button form__button-1" onclick="requestData()">Search</button>
             <button class="form__button form__button-2" onclick="requestDataAndGo()">I'm feeling lucky</button>
+            <div id="searchResult" class="searchResult"></div><br>
         </div>
-        <div id="searchResult"></div>
+        
     </div>
     
 
     <script type="text/javascript">
         var serverUrl = "http://tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion";
-        
+        let searchbar = document.getElementById("searchKey");
+        searchbar.addEventListener("keydown", function(e) {
+            if (e.keyCode===13) {
+                requestDataAndGo();
+
+            }
+        })
         function requestData() {
             let key = document.getElementById("searchKey").value;
             let result = document.getElementById("searchResult");

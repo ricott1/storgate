@@ -109,3 +109,7 @@ body{
 .marginBottom{
     margin-bottom: 2rem;
 }
+
+.searchResult {
+    float: bottom;
+}

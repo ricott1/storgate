@@ -47,7 +47,10 @@
             };
 
             output.innerHTML = net;
-            web3.eth.getAccounts(accounts => console.log(accounts[0]))
+            web3.eth.getAccounts((err,accounts) => {
+                console.log(err, accounts)
+                console.log("ciao after", accounts)
+            })
         })
     }
     </script>
