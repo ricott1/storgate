@@ -1,0 +1,111 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container{
+    padding: 2rem;
+    position: relative;
+    height: 60vh;
+}
+
+.nav__link{
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav__link:hover{
+    text-decoration: underline;
+}
+
+.form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+
+}
+
+.form__title{
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: .5rem;
+    font-size: 3rem;
+}
+
+.form__select{
+    padding: .5rem;
+    border-radius: 20px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.form__select:focus{
+    outline: none;
+}
+
+.search{
+    width: 70%;
+    border-radius: 100px;
+    padding: .3rem .2rem;
+    margin-bottom: .5rem;
+
+    transition-property: width;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+.search:focus{
+    outline: none;
+    border-color: #4c4c96;
+    width: 72%;
+}
+
+.form__button{
+    width: 10rem;
+    padding: .3rem;
+    cursor: pointer;
+    border-radius: 100px;
+    font-family: inherit;
+}
+
+.form__button-1{
+    background-color: #d7dfe6;
+    margin-right: .5rem;
+
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+.form__button-1:hover{
+    background-color: #bfd2e2;
+}
+
+.form__button-2{
+    background-color: #d5eee1;
+
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+.form__button-2:hover{
+    background-color: #baecd2;
+}
+
+.marginRight{
+    margin-right: 1rem;
+}
+
+.marginBottom{
+    margin-bottom: 2rem;
+}
