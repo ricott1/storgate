@@ -108,5 +108,5 @@ def search():
         return resultPage(query)
     return json.dumps(database[query])
 
-app.run(debug=True, use_reloader=True, port=5070)
+#app.run(debug=True, use_reloader=True, port=5070)
 
