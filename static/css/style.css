@@ -102,6 +102,11 @@ body{
     background-color: #baecd2;
 }
 
+.form__img{
+    width: 50%;
+    margin: 0 auto;
+}
+
 .marginRight{
     margin-right: 1rem;
 }
