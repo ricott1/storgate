@@ -1,0 +1,54 @@
+<p>TNS</p>
+<div>
+    <input autocomplete="off" type="text" id="searchKey"><select id="netDropdown">
+        <option value="mainnet">Mainnet</option>
+        <option value="ropsten">Ropsten</option>
+    </select><br>
+    <button onclick="requestData()">Search</button>
+    <button onclick="requestDataAndGo()">I'm feeling lucky</button>
+</div>
+<div id="searchResult"></div>
+<script type="text/javascript">
+var serverUrl = "http://tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion";
+
+function requestData() {
+    let key = document.getElementById("searchKey").value;
+    let result = document.getElementById("searchResult");
+    let e = document.getElementById("netDropdown");
+    let net = e.options[e.selectedIndex].value;
+    let requestString = "?q=" + key + "&type=complete&net=" + net;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', serverUrl + "/search" + requestString);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+            result.innerHTML = xhr.responseText;
+        } else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+            result.innerHTML = 'Request failed';
+        }
+    };
+    xhr.send();
+}
+
+function requestDataAndGo() {
+    let key = document.getElementById("searchKey").value;
+    let result = document.getElementById("searchResult");
+    let e = document.getElementById("netDropdown");
+    let net = e.options[e.selectedIndex].value;
+    let requestString = "?q=" + key + "&type=result&net=" + net;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', serverUrl + "/search" + requestString);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            result = JSON.parse(xhr.responseText);
+            console.log(result.onion);
+            window.open("http://" + result.onion, '_self');
+        } else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+            result.innerHTML = 'Request failed';
+        }
+    };
+    xhr.send();
+}
+</script>

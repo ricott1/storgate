@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@0.19.0/dist/web3.js"></script>
+    <script type="text/javascript">
+    window.addEventListener('load', function() {
+        let battlesBlocksContract = web3.eth.contract(ABI)
+        let battlesBlocksContractInstance = battlesBlocksContract.at(address)
+        console.log(output);
+        if (typeof web3 !== 'undefined') {
+            console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+            window.web3 = new Web3(web3.currentProvider);
+            web3.currentProvider.publicConfigStore.on('update', getNetwork);
+            getNetwork()
+        } else {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Please download and install Metamask: <a href="https://metamask.io/">https://metamask.io/</a>'
+        }
+    });
+
+    function getNetwork() {
+        let output = document.getElementById('output');
+        let net;
+        web3.version.getNetwork((err, netId) => {
+            switch (netId) {
+                case "1":
+                    net = 'This is mainnet';
+                    break
+                case "2":
+                    net = 'This is the deprecated Morden test network.'
+                    break
+                case "3":
+                    net = 'This is the ropsten test network.';
+                    break
+                case "4":
+                    net = 'This is the Rinkeby test network.';
+                    break
+                case "42":
+                    net = 'This is the Kovan test network.';
+                    break
+                default:
+                    net = 'This is an unknown network.';
+            };
+
+            output.innerHTML = net;
+            web3.eth.getAccounts(accounts => console.log(accounts[0]))
+        })
+    }
+    </script>
+</head>
+
+<body>
+    <div id="output">Test web3</div>
+</body>
+
+</html>

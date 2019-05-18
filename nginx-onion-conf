@@ -1,0 +1,15 @@
+server {
+	listen 127.0.0.1:9070;
+	root /home/alessandro/Desktop/TNS/static/engine;
+	index index.html index.html;
+	server_tokens off;
+	server_name tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion;
+	location / {
+		autoindex on;
+	}
+
+	location /search {
+            proxy_pass http://127.0.0.1:5070;
+        }
+
+}
