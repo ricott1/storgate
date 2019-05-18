@@ -6,9 +6,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@0.19.0/dist/web3.js"></script>
     <script type="text/javascript">
     window.addEventListener('load', function() {
-        let battlesBlocksContract = web3.eth.contract(ABI)
-        let battlesBlocksContractInstance = battlesBlocksContract.at(address)
-        console.log(output);
+        
         if (typeof web3 !== 'undefined') {
             console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
             window.web3 = new Web3(web3.currentProvider);

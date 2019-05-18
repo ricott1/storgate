@@ -43,7 +43,14 @@ function requestDataAndGo() {
         if (xhr.status === 200) {
             result = JSON.parse(xhr.responseText);
             console.log(result.onion);
-            window.open("http://" + result.onion + ".onion", '_self');
+            if (result.onion !== "") {
+                window.open("http://" + result.onion + ".onion", '_self');
+            } else if (result.content !== "") { 
+                window.open("https://gateway.ipfs.io/ipfs/" + result.content, '_self'); 
+            } else {
+                result.innerHTML = 'No onion or IPFS addresses specified';
+            }
+
         } else {
             console.log('Request failed.  Returned status of ' + xhr.status);
             result.innerHTML = 'Request failed';
