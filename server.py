@@ -1,7 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
 from time import gmtime, strftime
-from namehash import namehash
 import eth_utils
 import json
 
@@ -24,7 +23,7 @@ def get_resolver_data(query, net="ropsten"):
     registry = web3_data["ENSRegistry"]["contract"][net]
     resol = registry.functions.resolver(ENS.namehash(query))
     owner = registry.functions.owner(ENS.namehash(query))
-    resolver = web3_data["PublicResolver"]["contract"][net]
+    resolver = w3[net].eth.contract(resol.call(), abi=web3_data["PublicResolver"]["abi"])
     address = resolver.functions.addr(ENS.namehash(query))
     onion = resolver.functions.text(ENS.namehash(query), "onion")
     

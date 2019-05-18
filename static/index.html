@@ -43,7 +43,7 @@ function requestDataAndGo() {
         if (xhr.status === 200) {
             result = JSON.parse(xhr.responseText);
             console.log(result.onion);
-            window.open("http://" + result.onion, '_self');
+            window.open("http://" + result.onion + ".onion", '_self');
         } else {
             console.log('Request failed.  Returned status of ' + xhr.status);
             result.innerHTML = 'Request failed';
