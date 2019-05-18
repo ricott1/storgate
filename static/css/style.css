@@ -22,14 +22,18 @@
 }
 
 .form__title{
-    margin-bottom: 2rem
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: .5rem;
+    font-size: 3rem;
 }
 
 .search{
     width: 70%;
     border-radius: 100px;
     padding: .3rem .2rem;
-    margin-bottom: .3rem;
+    margin-bottom: .5rem;
+
     transition-property: width;
     transition-duration: .2s;
     transition-timing-function: ease-in-out;
@@ -37,18 +41,20 @@
 
 .search:focus{
     outline: none;
+    border-color: #4c4c96;
     width: 72%;
 }
 
 .form__button{
+    width: 10rem;
     padding: .3rem;
     cursor: pointer;
     border-radius: 100px;
 }
 
 .form__button-1{
-    width: 5rem;
     background-color: #d7dfe6;
+    margin-right: .5rem;
 
     transition-property: background-color;
     transition-duration: .2s;
@@ -60,7 +66,6 @@
 }
 
 .form__button-2{
-    width: 10rem;
     background-color: #d5eee1;
 
     transition-property: background-color;
