@@ -10,17 +10,24 @@
 <body>
     <div class="container">
         <nav>
-            <a class="nav__link" href="./index.html">About</a>
+            <a class="nav__link" href="./about.html">About</a>
         </nav>
         <div class="form">
-            <img class="form__img" src="img/main-logo-official.png" />
-            <input class="search" autocomplete="off" type="text" id="searchKey">
-            <select class="form__select" id="netDropdown">
-                <option value="mainnet">Mainnet</option>
-                <option value="ropsten">Ropsten</option>
-            </select><br>
-            <button class="form__button form__button-1" onclick="requestData()">Search</button>
-            <button class="form__button form__button-2" onclick="requestDataAndGo()">I'm feeling lucky</button>
+
+            <div class="logo center">
+                    <img src="./img/logo-ready.png" class="center" alt="logo">
+            </div>
+                <input class="search" autocomplete="off" type="text" id="searchKey">
+                <select class="form__select" id="netDropdown">
+                    <option value="mainnet">Mainnet</option>
+                    <option value="ropsten">Ropsten</option>
+                </select><br>
+
+                <div class="center">
+                    <button class="form__button form__button-1" onclick="requestData()">Search</button>
+                    <button class="form__button form__button-2" onclick="requestDataAndGo()">I'm feeling lucky</button>  
+                </div>
+
             <div id="searchResult" class="searchResult"></div><br>
         </div>
         

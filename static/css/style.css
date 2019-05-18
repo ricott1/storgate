@@ -19,6 +19,7 @@ body{
 .nav__link{
     text-decoration: none;
     font-size: 1.2rem;
+    color: black;
 }
 
 .nav__link:hover{
@@ -42,9 +43,10 @@ body{
 }
 
 .form__select{
-    padding: .5rem;
-    border-radius: 20px;
+    padding: .4rem;
+    border-radius: 2px;
     font-family: inherit;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -55,9 +57,8 @@ body{
 .search{
     width: 70%;
     border-radius: 100px;
-    padding: .3rem .2rem;
+    padding: .6rem .2rem;
     margin-bottom: .5rem;
-
     transition-property: width;
     transition-duration: .2s;
     transition-timing-function: ease-in-out;
@@ -75,15 +76,18 @@ body{
     cursor: pointer;
     border-radius: 100px;
     font-family: inherit;
+    font-size: 20px;
+    color: #5F6368;
 }
 
 .form__button-1{
     background-color: #d7dfe6;
     margin-right: .5rem;
-
+    font-size: 20px;
     transition-property: background-color;
     transition-duration: .2s;
     transition-timing-function: ease-in-out;
+    color: #5F6368;
 }
 
 .form__button-1:hover{
@@ -102,11 +106,6 @@ body{
     background-color: #baecd2;
 }
 
-.form__img{
-    width: 50%;
-    margin: 0 auto;
-}
-
 .marginRight{
     margin-right: 1rem;
 }
@@ -118,3 +117,11 @@ body{
 .searchResult {
     float: bottom;
 }
+
+
+/* adding */
+.center {
+    margin: auto;
+    width: 80%;
+    /* padding: 3px; */
+  }
