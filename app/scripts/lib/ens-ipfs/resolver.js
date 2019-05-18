@@ -28,11 +28,37 @@ async function resolveEnsToIpfsContentId({ provider, name }) {
   }
   const Resolver = contract(resolverAbi).at(resolverAddress)
 
-  // lookup content id
-  const contentLookupResult = await Resolver.content(hash)
-  const contentHash = contentLookupResult[0]
-  if (hexValueIsEmpty(contentHash)) {
-    //if no swarm is setup, try to resolve onion address
+  const contenthashInterfaceLookupResult = await Resolver.supportsInterface("0xbc1c58d1")
+  const contenthashInterface = contenthashInterfaceLookupResult[0]
+  console.log(contenthashInterface, "support")
+  if (contenthashInterface) {
+    const contenthashLookupResult = await Resolver.contenthash(hash)
+    const contenthash = contenthashLookupResult[0]
+    if (!hexValueIsEmpty(contenthash)) {
+      const nonPrefixedHex = contenthash.slice(2)
+      const buffer = multihash.fromHexString(nonPrefixedHex)
+      const contentId = multihash.toB58String(multihash.encode(buffer, 'sha2-256'))
+      return [contentId, "ipfs"]
+    }
+  }
+
+  const contentInterfaceLookupResult = await Resolver.supportsInterface("0xd8389dc5")
+  const contentInterface = contentInterfaceLookupResult[0]
+  if (contentInterface) {
+    const contentLookupResult = await Resolver.content(hash)
+    const content = contentLookupResult[0]
+    if (!hexValueIsEmpty(content)) {
+      const nonPrefixedHex = content.slice(2)
+      const buffer = multihash.fromHexString(nonPrefixedHex)
+      const contentId = multihash.toB58String(multihash.encode(buffer, 'sha2-256'))
+      return [contentId, "ipfs"]
+    }
+  }
+
+
+  const textInterfaceLookupResult = await Resolver.supportsInterface("0x59d1d43c")
+  const textInterface = textInterfaceLookupResult[0]
+  if (textInterface) {
     const contentLookupResultTns = await Resolver.text(hash, "onion")
     console.log("onion addr: ", contentLookupResultTns[0])
     if (contentLookupResultTns[0] === "") {
@@ -40,10 +66,8 @@ async function resolveEnsToIpfsContentId({ provider, name }) {
     }
     return [contentLookupResultTns[0], "onion"]
   }
-  const nonPrefixedHex = contentHash.slice(2)
-  const buffer = multihash.fromHexString(nonPrefixedHex)
-  const contentId = multihash.toB58String(multihash.encode(buffer, 'sha2-256'))
-  return [contentId, "ipfs"]
+
+
 }
 
 function hexValueIsEmpty(value) {
