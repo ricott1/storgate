@@ -106,6 +106,12 @@ body{
     background-color: #baecd2;
 }
 
+.about__box{
+    border: 2px solid black;
+    margin: .5rem;
+    padding: .5rem;
+}
+
 .marginRight{
     margin-right: 1rem;
 }
@@ -117,7 +123,6 @@ body{
 .searchResult {
     float: bottom;
 }
-
 
 /* adding */
 .center {
