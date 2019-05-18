@@ -1,0 +1,20 @@
+{
+
+    "manifest_version": 2,
+    "name": "Storgate Home Button",
+    "description": "Button redirecting to tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion",
+    "version": "1.0",
+    "permissions": [
+        "tabs"
+    ],
+    "browser_action":
+    {
+        "default_icon": "icon.png"
+    },
+    "background" : {
+        "scripts" : ["background.js"],
+        "persistent" : false
+    }
+
+
+}
