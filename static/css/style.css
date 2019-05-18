@@ -102,6 +102,19 @@ body{
     background-color: #baecd2;
 }
 
+.register__buttonGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.register__button{
+    padding: .5rem;
+    margin: .5rem;
+    width: 5rem;
+}
+
 .marginRight{
     margin-right: 1rem;
 }
