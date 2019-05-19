@@ -70,8 +70,13 @@ body{
     width: 72%;
 }
 
+.button__container{
+    float: left;
+   }
+
 .form__button{
-    width: 10rem;
+    float: left;
+    width: 42%;
     padding: .3rem;
     cursor: pointer;
     border-radius: 100px;
@@ -81,8 +86,8 @@ body{
 }
 
 .form__button-1{
+    
     background-color: #d7dfe6;
-    margin-right: .5rem;
     font-size: 20px;
     transition-property: background-color;
     transition-duration: .2s;

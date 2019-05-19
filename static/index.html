@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,90 +8,86 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Storgate</title>
 </head>
+
 <body>
     <div class="container">
         <nav>
             <a class="nav__link" href="./about.html">About</a>
         </nav>
         <div class="form">
-
             <div class="logo center">
-                    <img src="./img/logo-ready.png" class="center" alt="logo">
+                <img src="./img/logo-ready.png" class="center" alt="logo">
             </div>
-                <input class="search" autocomplete="off" type="text" id="searchKey">
-                <select class="form__select" id="netDropdown">
-                    <option value="mainnet">Mainnet</option>
-                    <option value="ropsten">Ropsten</option>
-                </select><br>
-
-                <div class="center">
-                    <button class="form__button form__button-1" onclick="requestData()">Search</button>
-                    <button class="form__button form__button-2" onclick="requestDataAndGo()">I'm feeling lucky</button>  
-                </div>
-
+            <input class="search" autocomplete="off" type="text" id="searchKey">
+            <select class="form__select" id="netDropdown">
+                <option value="mainnet">Mainnet</option>
+                <option value="ropsten">Ropsten</option>
+            </select><br>
+            <div class="center button__container">
+                <button class="form__button form__button-1" onclick="requestData()">Search</button>
+                <button class="form__button form__button-2" onclick="requestDataAndGo()">I'm feeling lucky</button>
+            </div>
             <div id="searchResult" class="searchResult"></div><br>
         </div>
-        
     </div>
-    
-
     <script type="text/javascript">
-        var serverUrl = "http://tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion";
-        let searchbar = document.getElementById("searchKey");
-        searchbar.addEventListener("keydown", function(e) {
-            if (e.keyCode===13) {
-                requestDataAndGo();
+    var serverUrl = "http://tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion";
+    let searchbar = document.getElementById("searchKey");
+    searchbar.addEventListener("keydown", function(e) {
+        if (e.keyCode === 13) {
+            requestDataAndGo();
 
+        }
+    })
+
+    function requestData() {
+        let key = document.getElementById("searchKey").value;
+        let result = document.getElementById("searchResult");
+        let e = document.getElementById("netDropdown");
+        let net = e.options[e.selectedIndex].value;
+        let requestString = "?q=" + key + "&type=complete&net=" + net;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', serverUrl + "/search" + requestString);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+                result.innerHTML = xhr.responseText;
+            } else {
+                console.log('Request failed.  Returned status of ' + xhr.status);
+                result.innerHTML = 'Request failed';
             }
-        })
-        function requestData() {
-            let key = document.getElementById("searchKey").value;
-            let result = document.getElementById("searchResult");
-            let e = document.getElementById("netDropdown");
-            let net = e.options[e.selectedIndex].value;
-            let requestString = "?q=" + key + "&type=complete&net=" + net;
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', serverUrl + "/search" + requestString);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    console.log(xhr.responseText);
-                    result.innerHTML = xhr.responseText;
+        };
+        xhr.send();
+    }
+
+    function requestDataAndGo() {
+        let key = document.getElementById("searchKey").value;
+        let result = document.getElementById("searchResult");
+        let e = document.getElementById("netDropdown");
+        let net = e.options[e.selectedIndex].value;
+        let requestString = "?q=" + key + "&type=result&net=" + net;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', serverUrl + "/search" + requestString);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                result = JSON.parse(xhr.responseText);
+                console.log(result.onion);
+                if (result.onion !== "") {
+                    window.open("http://" + result.onion + ".onion", '_self');
+                } else if (result.content !== "") {
+                    window.open("https://gateway.ipfs.io/ipfs/" + result.content, '_self');
                 } else {
-                    console.log('Request failed.  Returned status of ' + xhr.status);
-                    result.innerHTML = 'Request failed';
+                    result.innerHTML = 'No onion or IPFS addresses specified';
                 }
-            };
-            xhr.send();
-        }
-        
-        function requestDataAndGo() {
-            let key = document.getElementById("searchKey").value;
-            let result = document.getElementById("searchResult");
-            let e = document.getElementById("netDropdown");
-            let net = e.options[e.selectedIndex].value;
-            let requestString = "?q=" + key + "&type=result&net=" + net;
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', serverUrl + "/search" + requestString);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    result = JSON.parse(xhr.responseText);
-                    console.log(result.onion);
-                    if (result.onion !== "") {
-                        window.open("http://" + result.onion + ".onion", '_self');
-                    } else if (result.content !== "") { 
-                        window.open("https://gateway.ipfs.io/ipfs/" + result.content, '_self'); 
-                    } else {
-                        result.innerHTML = 'No onion or IPFS addresses specified';
-                    }
-        
-                } else {
-                    console.log('Request failed.  Returned status of ' + xhr.status);
-                    result.innerHTML = 'Request failed';
-                }
-            };
-            xhr.send();
-        }
-        </script>
+
+            } else {
+                console.log('Request failed.  Returned status of ' + xhr.status);
+                result.innerHTML = 'Request failed';
+            }
+        };
+        xhr.send();
+    }
+    </script>
 </body>
 
 </html>

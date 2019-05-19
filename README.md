@@ -1,3 +1,6 @@
+# sTorGate
+
+ Open the portal to the Tor network! Register your hidden service onion address on the ENS, use Metamask to explore Tor directly from your search bar, or just use our search engine.
 ## Inspiration
 The [TOR network](https://2019.www.torproject.org/docs/onion-services.html.en) provides privacy to [millions of users](https://metrics.torproject.org/userstats-relay-country.html) around the world. Today, one of the major drawback for a wide adoption of Tor is the lack of a human-readable naming system. The onion addresses used to reach a node in the Tor network are part of the cryptographic protocol, and as such they are a practically a random sequence of characters.
 
