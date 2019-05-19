@@ -17,9 +17,11 @@ body{
 }
 
 .nav__link{
-    text-decoration: none;
+    text-decoration:underline;
     font-size: 1.2rem;
     color: black;
+    margin-right: 2rem;
+
 }
 
 .nav__link:hover{
