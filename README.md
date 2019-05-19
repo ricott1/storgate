@@ -30,3 +30,6 @@ We learned a lot about the ENS and Tor platforms, and the way Metamask can be in
 If this platform gets adopted by the community, it could be useful to define a special resolver for onion addresses, in an analogous way to the Ipfs resolver. 
 
 We would like to see our pull requests accepted and integrated in the main repositories.
+
+## Installation
+To install the addons, go to `about:debugging` in the tor browser, `load temporary add-on`, select metamask_firefox.zip and storgate_addon.zip. You are set to go.
