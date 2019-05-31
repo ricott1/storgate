@@ -114,6 +114,8 @@ HASH_TABLE = (
     {'code': 0xb260, 'length': 0x20, 'hash': 'blake2s-256'},
     {'code': 0x01bc, 'length': 0xa, 'hash': 'onion'},
     {'code': 0x01bd, 'length': 0x23, 'hash': 'onion3'},
+    {'code': 0xe3, 'length': 0x20, 'hash': 'ipfs-ns'},
+    {'code': 0xe4, 'length': 0x20, 'hash': 'swarm-ns'},
     {'code': 0xb301, 'length': 0x1, 'hash': 'Skein256-8'},
     {'code': 0xb302, 'length': 0x2, 'hash': 'Skein256-16'},
     {'code': 0xb303, 'length': 0x3, 'hash': 'Skein256-24'},

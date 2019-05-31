@@ -10,6 +10,11 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+h2{
+    margin-top: 2rem;
+    margin-bottom: 4px;
+}
+
 .container{
     padding: 2rem;
     position: relative;

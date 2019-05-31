@@ -2,32 +2,45 @@
 <html lang="en">
 
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Storgate</title>
 </head>
 
 <body>
-    <div>
-        <img src="./img/logo-ready.png"  alt="logo" width="200">
-    </div>
-    <div class="container" style="font-size:32px;">
-        Open the portal to the Tor network! Register your hidden service onion address on the ENS, use Metamask to explore Tor directly from your search bar, or just use our search engine
-        <h2>Inspiration</h2>
-        The <a href="https://2019.www.torproject.org/docs/onion-services.html.en">TOR network</a> provides privacy to <a href="https://metrics.torproject.org/userstats-relay-country.html">millions of users</a> around the world. Today, one of the major drawback for a wide adoption of Tor is the lack of a human-readable naming system. The onion addresses used to reach a node in the Tor network are part of the cryptographic protocol, and as such they are a practically a random sequence of characters.
-        The community has proposed <a href="https://blog.torproject.org/cooking-onions-names-your-onions">various solutions</a>, but there are shortcomings for each of them.
-        The <a href="https://ens.domains/">ENS</a> offers the perfect platform to solve many of these issues. Users can register an onion address and have their ENS name resolve it. The ENS takes care of the names distribution market, and provides a distributed "address book" that users can access via Metamask or our server.
-        <h2>What it does</h2>
-        Our project contains several parts:
-        - <a href="https://github.com/ricott1/metamask-extension">we extended Metamask</a> to resolve .eth domain also to their `text["onion"]` entry. A compiled version ready for distribution can be found in <a href="https://github.com/ricott1/storgate">our repo<a>;
-        - we added the option to <a href="https://github.com/jvluso/ens-app">set an onion address</a> in the ens-app, to facilitate the registration of a hidden service to the ENS;
-        - we put online a <a href="http://tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion/">hidden service</a> that can resolve onion addresses, acting as a search engine for users that prefer to avoid installing addons. Our server use <a href="https://infura.io/">Infura</a> to connect to the Mainnet and the Ropsten blockchains. The hidden service is registered at storgate.eth on Mainnet and Ropsten;
-        - we wrote a simple <a href="https://github.com/ricott1/storgate">addon</a> that connects directly to our server;
-        - we setup a Tor <a href="http://x25ufqll2pk53hqx.onion">Rocketchat</a> @ chat.storgate.eth to use as a platform for discussion on future improvements.
-        
-        <h2>sTorGate works</h2>
-         People around the world can start using it today, they just need to <a href="https://github.com/ricott1/storgate">download the modified Metamask addon</a> or the <a href="https://github.com/ricott1/storgate">sTorGate addon</a> to visit our server, and start surfing Tor and <a href="https://github.com/jvluso/ens-app">register</a> their hidden services on the ENS.
-        
-        <h3>Join the discussion @<a href="http://x25ufqll2pk53hqx.onion">chat.storgate.eth</a>!</h3>
+    <div id="container">
+        <nav>
+        	<a class="nav__link" href="./index.html"><img src="./img/logo-ready.png" alt="logo" width="120"></a>
+            <a class="nav__link" href="http://tnsih22htzzacsuagug2674jgrny5h6sdi3p7t2b6dufd4yyf2delyad.onion">Registration</a>
+            <a class="nav__link" href="http://x25ufqll2pk53hqx.onion/">Discussion</a>
+            <a class="nav__link" href="./metamask_addon_firefox.zip" download>
+                Metamask
+            </a>
+            <a class="nav__link" href="./storgate_addon.zip" download>
+                Storgate
+            </a>
+            <a class="nav__link" href="./about.html">About</a>
+        </nav>
+
+        <div class="container" style="font-size:24px;">
+            <h1 style="text-align:center;">Open the portal to the Tor network!</h1><br>
+             Register your hidden service onion address on the ENS, use Metamask to explore Tor directly from your search bar, or just use our search engine
+            <h2>Inspiration</h2>
+            The <a href="https://2019.www.torproject.org/docs/onion-services.html.en">TOR network</a> provides privacy to <a href="https://metrics.torproject.org/userstats-relay-country.html">millions of users</a> around the world. Today, one of the major drawback for a wide adoption of Tor is the lack of a human-readable naming system. The onion addresses used to reach a node in the Tor network are part of the cryptographic protocol, and as such they are a practically a random sequence of characters.
+            The community has proposed <a href="https://blog.torproject.org/cooking-onions-names-your-onions">various solutions</a>, but there are shortcomings for each of them.
+            The <a href="https://ens.domains/">ENS</a> offers the perfect platform to solve many of these issues. Users can register an onion address and have their ENS name resolve it. The ENS takes care of the names distribution market, and provides a distributed "address book" that users can access via Metamask or our server.
+            <h2>What it does</h2>
+            Our project contains several parts:
+            - <a href="https://github.com/ricott1/metamask-extension">we extended Metamask</a> to resolve .eth domain also to their `text["onion"]` entry. A compiled version ready for distribution can be found in <a href="https://github.com/ricott1/storgate">our repo</a>;
+            - we added the option to <a href="https://github.com/jvluso/ens-app">set an onion address</a> in the ens-app, to facilitate the registration of a hidden service to the ENS;
+            - we put online a <a href="http://tnsksqdywtzhe5yrel5b5apizwhfbiqrhhmjmg66vtojkdmiascrlpyd.onion/">hidden service</a> that can resolve onion addresses, acting as a search engine for users that prefer to avoid installing addons. Our server use <a href="https://infura.io/">Infura</a> to connect to the Mainnet and the Ropsten blockchains. The hidden service is registered at storgate.eth on Mainnet and Ropsten;
+            - we wrote a simple <a href="https://github.com/ricott1/storgate">addon</a> that connects directly to our server;
+            - we setup a Tor <a href="http://x25ufqll2pk53hqx.onion">Rocketchat</a> @ chat.storgate.eth to use as a platform for discussion on future improvements.
+            <h2>sTorGate works</h2>
+            People around the world can start using it today, they just need to download the custom <a href="./metamask_addon_firefox.zip" download>Metamask addon</a> or the <a href="./storgate_addon.zip" download>sTorGate addon</a> to visit our server, and start surfing Tor and <a href="https://github.com/jvluso/ens-app">register</a> their hidden services on the ENS.
+            <h2>Join the discussion @<a href="http://x25ufqll2pk53hqx.onion">chat.storgate.eth</a>!</h2><br>
+
+            <h4>Contact: ricott2@gmail.com</h4>
+        </div>
     </div>
 </body>
 

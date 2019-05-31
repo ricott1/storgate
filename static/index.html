@@ -14,6 +14,12 @@
         <nav>
             <a class="nav__link" href="http://tnsih22htzzacsuagug2674jgrny5h6sdi3p7t2b6dufd4yyf2delyad.onion">Registration</a>
             <a class="nav__link" href="http://x25ufqll2pk53hqx.onion/">Discussion</a>
+            <a class="nav__link"  href="./metamask_addon_firefox.zip" download>
+                Metamask
+            </a>
+            <a class="nav__link"  href="./storgate_addon.zip" download>
+                Storgate
+            </a>
             <a class="nav__link" href="./about.html">About</a>
         </nav>
         <div class="form">
@@ -76,8 +82,8 @@
                 console.log(result.onion);
                 if (result.onion !== "") {
                     window.open("http://" + result.onion + ".onion", '_self');
-                } else if (result.content !== "") {
-                    window.open("https://gateway.ipfs.io/ipfs/" + result.content, '_self');
+                } else if (result.ipfs !== "") {
+                    window.open("https://gateway.ipfs.io/ipfs/" + result.ipfs, '_self');
                 } else {
                     result.innerHTML = 'No onion or IPFS addresses specified';
                 }
